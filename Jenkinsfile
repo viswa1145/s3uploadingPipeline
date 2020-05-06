@@ -1,15 +1,14 @@
 pipeline {
-  agent {
-    node {
-      label 'Master'
-      customWorkspace '/var/lib/jenkins/workspace/'
+   agent none
+   environment {
+       first_path = get_first()
+   }
+   stages {
+       stage('example') {
+            agent { label 'master' }
+            steps {
+                print(env.first_path)
+            }
+        }
     }
-  }
-  stages {
-    stage('Example Build') {
-      steps {
-        sh 'mvn -B clean verify'
-      }
-    }
-  }
 }
