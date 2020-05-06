@@ -2,9 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage("Env Variables") {
+        stage("Maven Build") {
             steps {
-                sh "$WORKSPACE"
+                sh '''
+                cd $WORKSPACE
+                pwd
+                '''
             }
         }
     }
