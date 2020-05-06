@@ -1,5 +1,5 @@
 pipeline {
-    agent {
+    agent any
        node {
            label 'Master'
            customWorkspace '/var/lib/jenkins/workspace/testing/'
@@ -21,5 +21,5 @@ pipeline {
         }
 
     }
-  }
 }
+
