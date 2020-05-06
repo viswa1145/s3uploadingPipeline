@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Execute Maven') {
             steps {
-                sh 'mvn -f $WORKSAPCE/pom.xml clean install'
+                sh 'mvn  clean install'
             }
         }
 
