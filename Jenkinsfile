@@ -1,18 +1,14 @@
 pipeline {
-    agent none 
+    agent any
+    
+    tools {
+        jdk "1.8.0_242"
+        maven "Maven 3.6.3"
+    }
     stages {
-        stage('Example Build') {
-            agent { docker 'maven:3-alpine' } 
+        stage('Clone sources') {
             steps {
-                echo 'Hello, Maven'
-                sh 'mvn --version'
-            }
-        }
-        stage('Example Test') {
-            agent { docker 'openjdk:8-jre' } 
-            steps {
-                echo 'Hello, JDK'
-                sh 'java -version'
+                git url: https://github.com/viswa1145/hello-world.git 
             }
         }
     }
