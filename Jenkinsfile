@@ -1,25 +1,15 @@
 pipeline {
-    agent any
-       node {
-           label 'Master'
-           customWorkspace '/var/lib/jenkins/workspace/testing/'
-       }
-    stages {
-        stage('Clone sources') {
-            steps {
-                git url: 'https://github.com/viswa1145/hello-world.git'
-            }
-        }
-        stage('Execute Maven') {
-            steps {
-                sh '''
-                cd ${workspace}
-                pwd
-                /opt/maven/apache-maven-3.6.3/bin/mvn  clean install
-                '''
-            }
-        }
-
+  agent {
+    node {
+      label 'my-defined-label'
+      customWorkspace '/var/lib/jenkins/workspace/'
     }
+  }
+  stages {
+    stage('Example Build') {
+      steps {
+        sh 'mvn -B clean verify'
+      }
+    }
+  }
 }
-
