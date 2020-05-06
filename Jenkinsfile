@@ -9,8 +9,17 @@ pipeline {
                 cd $WORKSPACE
                 pwd
                 /opt/maven/apache-maven-3.6.3/bin/mvn clean install
-                #echo $WORKSPACE/webapp/target/*.?ar
-                echo "aws s3 cp" find $WORKSPACE/webapp/target/*.?ar -type f -mmin +15 "s3://testing.com/"
+                aws s3 cp $WORKSPACE/webapp/target/*.?ar s3://testing.com/building/
+                '''
+            }
+        }
+        stage("S3  upload") {
+             when {
+                 stage 'Maven Build'  == SUCCESS
+             }
+            steps {
+                sh '''
+                echo "aws s3 cp" $WORKSPACE/webapp/target/*.?ar "s3://testing.com/building/"
                 '''
             }
         }
