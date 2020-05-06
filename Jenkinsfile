@@ -1,13 +1,20 @@
 pipeline {
    agent none
    environment {
-       first_path = get_first()
+       color = 'blue'
    }
    stages {
        stage('example') {
             agent { label 'master' }
             steps {
-                print(env.first_path)
+               script {
+                   def fields = env.getEnvironment()
+                   fields.each {
+                        key, value -> println("${key} = ${value}");
+                    }
+ 
+                    println(env.PATH)
+               }
             }
         }
     }
