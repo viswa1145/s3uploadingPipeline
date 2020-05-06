@@ -2,7 +2,7 @@ pipeline {
     agent any
     stage ('Build') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+                sh '/opt/maven/apache-maven-3.6.3/bin/mvn -Dmaven.test.failure.ignore=true install' 
             }
     }
 }
