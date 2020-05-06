@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh '''
                 cd /var/lib/jenkins/workspace/maven_project_Pipeline_1/
-                mvn  clean install
+                /opt/maven/apache-maven-3.6.3/bin/mvn  clean install
                 '''
             }
         }
