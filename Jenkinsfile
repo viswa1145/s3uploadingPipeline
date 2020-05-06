@@ -3,6 +3,9 @@ pipeline {
 
     stages {
         stage("Maven Build") {
+                    when {
+                        expression { return params.FORCE_FULL_BUILD }
+                    }
             steps {
                 git url: 'https://github.com/viswa1145/hello-world.git'
                 sh '''
