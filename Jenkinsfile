@@ -1,8 +1,11 @@
 pipeline {
-   agent none
-      node {
-          withEnv(["WORKSPACE=${pwd()}"]) {
-    // …
+    agent any
+
+    stages {
+        stage("Env Variables") {
+            steps {
+                sh "printenv"
+            }
+        }
     }
- }
 }
