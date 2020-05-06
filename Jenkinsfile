@@ -8,7 +8,10 @@ pipeline {
         }
         stage('Execute Maven') {
             steps {
-                sh 'mvn  clean install'
+                sh '''
+                cd /var/lib/jenkins/workspace/maven_project_Pipeline_1/
+                mvn  clean install
+                '''
             }
         }
 
