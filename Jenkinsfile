@@ -9,6 +9,8 @@ pipeline {
                 cd $WORKSPACE
                 pwd
                 /opt/maven/apache-maven-3.6.3/bin/mvn clean install
+                echo $BUILD_NUMBER
+                echo $BUILD_ID
                 '''
             }
         }
