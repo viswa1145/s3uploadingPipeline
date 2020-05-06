@@ -1,8 +1,17 @@
 pipeline {
     agent any
-        stage ('Build') {
+    stages {
+        stage('Clone sources') {
             steps {
-                sh '/opt/maven/apache-maven-3.6.3/bin/mvn -Dmaven.test.failure.ignore=true install' 
+                git url: 'https://github.com/viswa1145/hello-world.git'
+            }
+        }
+        stage('Execute Maven') {
+            steps {
+                script{
+                    rtMaven.run pom: 'pom.xml', goals: 'clean install', buildInfo: buildinfo
+                    
+                }
             }
         }
     }
