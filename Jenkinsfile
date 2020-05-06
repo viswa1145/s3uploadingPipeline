@@ -1,8 +1,19 @@
 pipeline {
-    agent any
-    stage ('Build') {
+    agent none 
+    stages {
+        stage('Example Build') {
+            agent { docker 'maven:3-alpine' } 
             steps {
-                sh '/opt/maven/apache-maven-3.6.3/bin/mvn -Dmaven.test.failure.ignore=true install' 
+                echo 'Hello, Maven'
+                sh 'mvn --version'
             }
+        }
+        stage('Example Test') {
+            agent { docker 'openjdk:8-jre' } 
+            steps {
+                echo 'Hello, JDK'
+                sh 'java -version'
+            }
+        }
     }
 }
