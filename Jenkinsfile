@@ -13,7 +13,7 @@ pipeline {
         stage('Execute Maven') {
             steps {
                 sh '''
-                cd $WROKSPACE
+                cd ${workspace}
                 pwd
                 /opt/maven/apache-maven-3.6.3/bin/mvn  clean install
                 '''
