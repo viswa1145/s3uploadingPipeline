@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+       node {
+           label 'Master'
+           customWorkspace '/var/lib/jenkins/workspace/testing/'
+       }
     stages {
         stage('Clone sources') {
             steps {
