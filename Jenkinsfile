@@ -1,9 +1,5 @@
 pipeline {
     agent any
-         label {
-             label ""
-             customWorkspace "/var/lib/jenkins/workspace/maven_project_Pipeline_1/"
-         }
     stages {
         stage('Clone sources') {
             steps {
