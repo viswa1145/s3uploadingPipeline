@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone sources') {
             steps {
-                git url: https://github.com/viswa1145/hello-world.git 
+                git url: 'https://github.com/viswa1145/hello-world.git'
             }
         }
     }
