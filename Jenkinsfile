@@ -13,6 +13,11 @@ pipeline {
             }
         }
         stage("S3  upload") {
+            b = build(stage: "Maven Build", propagate: false).result
+            if(b == 'FAILURE') {
+                echo "First stage failed"
+                currentBuild.result = 'UNSTABLE' // of FAILUR
+            }
             steps {
                 sh '''
                 echo "aws s3 cp" $WORKSPACE/webapp/target/*.?ar "s3://testing.com/building/"
