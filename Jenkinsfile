@@ -14,13 +14,10 @@ pipeline {
             }
         }
         stage("S3  upload") {
-             when {
-                 stage 'Maven Build'  == SUCCESS
             steps {
                 sh '''
                 echo "aws s3 cp" $WORKSPACE/webapp/target/*.?ar "s3://testing.com/building/"
                 '''
-             }
            }
         }
     }
