@@ -3,9 +3,6 @@ pipeline {
 
     stages {
         stage("Maven Build") {
-                    when {
-                        expression { return params.FORCE_FULL_BUILD }
-                    }
             steps {
                 git url: 'https://github.com/viswa1145/hello-world.git'
                 sh '''
@@ -19,12 +16,12 @@ pipeline {
         stage("S3  upload") {
              when {
                  stage 'Maven Build'  == SUCCESS
-             }
             steps {
                 sh '''
                 echo "aws s3 cp" $WORKSPACE/webapp/target/*.?ar "s3://testing.com/building/"
                 '''
-            }
+             }
+           }
         }
     }
 }
