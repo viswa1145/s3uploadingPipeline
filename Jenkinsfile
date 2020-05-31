@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage('Build') {
             when {
-                environment name: 'DEPLOY_TO', value: 'production'
+                beforeAgent true
+                branch 'master'
             }
 
             steps {
