@@ -2,6 +2,9 @@ pipeline {
     agent any
 
     stages {
+        when {
+                branch 'master'
+            }
         stage("Maven Build") {
             steps {
                 sh '''
