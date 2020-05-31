@@ -17,7 +17,7 @@ pipeline {
                 sh '''
                 echo "aws s3 cp" $WORKSPACE/webapp/target/*.?ar "s3://testing.com/building/"
                 '''
-           }
+            }
         }
     }
 }
