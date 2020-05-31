@@ -1,15 +1,16 @@
 pipeline {
     agent any
-
+	environment{
+		DEPLOY_TO='production'
+	}
     stages {
-        stage("Maven Build") {
+        stage('Build') {
+            when {
+                environment name: 'DEPLOY_TO', value: 'production'
+            }
+
             steps {
-                git url: 'https://github.com/viswa1145/hello-world.git'
-                sh '''
-                cd $WORKSPACE
-                pwd
-                /opt/maven/apache-maven-3.6.3/bin/mvn clean install
-                '''
+                echo 'Deploying'
             }
         }
     }
