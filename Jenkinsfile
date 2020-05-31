@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    when {
-        branch 'master'
-    }
+
 
     stages {
         stage("Maven Build") {
@@ -21,6 +19,10 @@ pipeline {
             }
         }
         stage("S3  upload") {
+            when {
+                beforeAgent true
+                branch 'master'
+            }
             steps {
                 sh '''
                 echo "aws s3 cp" $WORKSPACE/webapp/target/*.?ar "s3://testing.com/building/"
