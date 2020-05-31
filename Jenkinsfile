@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             when {
                 beforeAgent true
-                branch 'CI_Pipeline-Example'
+                branch 'master'
             }
 
             steps {
