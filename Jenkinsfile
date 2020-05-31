@@ -23,5 +23,11 @@ pipeline {
                 '''
            }
         }
+        stage("Lmabda Function") {
+            steps {
+                echo "Lmabda function running "
+                
+           }
+        }
     }
 }
