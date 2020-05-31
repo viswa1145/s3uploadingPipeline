@@ -3,9 +3,11 @@ pipeline {
 
     stages {
         when {
-                branch 'master'
-            }
+            branch 'master'
+        }
+
         stage("Maven Build") {
+            
             steps {
                 sh '''
                 cd $WORKSPACE
