@@ -11,6 +11,11 @@ pipeline {
                 '''
             }
         }
+        stage("Code Testing") {
+            steps {
+                echo "Here we are running code test"
+            }
+        }
         stage("S3  upload") {
             steps {
                 sh '''
