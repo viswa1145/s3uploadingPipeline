@@ -34,7 +34,7 @@ pipeline {
         }
         stage("Lmabda Function") {
             steps {
-                echo "awsCredentials"
+                echo "withCredentials(awsCredentials)"
                 echo "${env.aws_accesskey}"
                 echo "Lmabda function running "
                 
