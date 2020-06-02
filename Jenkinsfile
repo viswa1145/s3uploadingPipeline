@@ -31,6 +31,7 @@ pipeline {
         }
         stage("Lmabda Function") {
             steps {
+                echo "${env.AWS_SECRET_ACCESS_KEY}"
                 echo "Lmabda function running "
                 
            }
