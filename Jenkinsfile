@@ -3,7 +3,6 @@ def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credential
 pipeline {
     agent any
     options {
-        disableConcurrentBuilds()
         parallelsAlwaysFailFast()
         timestamps()
         withCredentials(awsCredentials)
