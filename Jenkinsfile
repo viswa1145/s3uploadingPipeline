@@ -34,7 +34,9 @@ pipeline {
         }
         stage("Lmabda Function") {
             steps {
-                echo "$aws-personal"
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+    // some block
+                }
                 echo "${env.aws_accesskey}"
                 echo "Lmabda function running "
                 
