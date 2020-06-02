@@ -1,3 +1,6 @@
+def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-personal']]
+
+
 pipeline {
     agent any
 
@@ -31,7 +34,7 @@ pipeline {
         }
         stage("Lmabda Function") {
             steps {
-                echo "${env.AWS_SECRET_ACCESS_KEY}"
+                echo "awsCredentials"
                 echo "${env.aws_accesskey}"
                 echo "Lmabda function running "
                 
