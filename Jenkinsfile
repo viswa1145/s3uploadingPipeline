@@ -1,5 +1,13 @@
+def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-test']]
+
 pipeline {
     agent any
+    options {
+        disableConcurrentBuilds()
+        parallelsAlwaysFailFast()
+        timestamps()
+        withCredentials(awsCredentials)
+    }
     stages {
         stage("Maven Build") {
             
