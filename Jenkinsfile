@@ -53,6 +53,16 @@ pipeline {
                 echo "nothing has been chagned"
                 
            }
+            post {
+                success {
+                    echo "Lmabda Function success!"
+                            
+                }
+                failure {
+                    echo "Lmabda Function failure!"
+                            
+                }
+            }
         }
         stage ("Deploying on Dev") {
             input{
