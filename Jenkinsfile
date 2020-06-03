@@ -1,4 +1,5 @@
 def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-test']]
+properties([pipelineTriggers([githubPush()])])
 
 pipeline {
     agent any
