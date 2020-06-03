@@ -54,5 +54,35 @@ pipeline {
                 
            }
         }
+        post {
+                success {
+                    echo "Lmabda Function success!"
+                            
+                }
+                failure {
+                    echo "Lmabda Function failure!"
+                            
+                }
+        }
+        stage ("Deploying on Dev") {
+            input{
+                message "Please specify environment:"			
+                ok "SUBMIT"
+                submitter "viswa1145@gmail.com"
+                submitterParameter "whoIsSubmitter"
+                parameters {
+                    choice(choices: ['Approved', 'Rejected'], description: 'We need Approval', name: 'Decision')
+                             
+                }
+            }
+            options {
+                timeout(time: 2, unit: 'MINUTES') 
+            }
+            steps {
+                echo "Deployting on Dev"
+            }
+            
+        }
+        
     }
 }
