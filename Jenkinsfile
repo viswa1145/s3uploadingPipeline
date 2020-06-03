@@ -80,6 +80,7 @@ pipeline {
             }
             steps {
                 echo "Deployting on Dev"
+                echo "something has been added"
             }
             
         }
