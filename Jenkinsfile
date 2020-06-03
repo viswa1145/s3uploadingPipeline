@@ -51,6 +51,7 @@ pipeline {
                 echo "nothing is running"
                 echo "change something"
                 echo "nothing has been chagned"
+                echo "This is for PR"
                 
            }
             post {
