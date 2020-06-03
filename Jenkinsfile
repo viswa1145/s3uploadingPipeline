@@ -47,6 +47,7 @@ pipeline {
                 '''
                 echo "$AWS_ACCESS_KEY_ID"
                 echo "Lmabda function running "
+                echo "nothing is running"
                 
            }
         }
