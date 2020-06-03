@@ -50,6 +50,7 @@ pipeline {
                 echo "Lmabda function running "
                 echo "nothing is running"
                 echo "change something"
+                echo "nothing has been chagned"
                 
            }
         }
