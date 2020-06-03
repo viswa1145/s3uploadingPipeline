@@ -54,16 +54,6 @@ pipeline {
                 
            }
         }
-        post {
-                success {
-                    echo "Lmabda Function success!"
-                            
-                }
-                failure {
-                    echo "Lmabda Function failure!"
-                            
-                }
-        }
         stage ("Deploying on Dev") {
             input{
                 message "Please specify environment:"			
