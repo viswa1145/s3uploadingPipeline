@@ -1,4 +1,4 @@
-def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-test']]
+Gdef awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-test']]
 
 pipeline {
     agent any
@@ -49,6 +49,7 @@ pipeline {
                 echo "Lmabda function running "
                 echo "nothing is running"
                 echo "change something"
+		echo "nothing has been changbeng"
                 
            }
         }
