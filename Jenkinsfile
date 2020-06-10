@@ -1,18 +1,93 @@
+def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-test']]
+properties([pipelineTriggers([githubPush()])])
+
 pipeline {
+    load "$WORKSPAC/env.groovy"
     agent any
-	environment{
-		DEPLOY_TO='productions'
-	}
+    options {
+        parallelsAlwaysFailFast()
+        timestamps()
+        withCredentials(awsCredentials)
+    }
     stages {
-        stage('Build') {
+        stage("Maven Build") {
+            
+            steps {
+                sh '''
+                cd $WORKSPACE
+                pwd
+                echo "/opt/maven/apache-maven-3.6.3/bin/mvn clean install"
+                '''
+            }
+        }
+        stage("Code Testing") {
+            steps {
+                echo "Here we are running code test"
+            }
+        }
+        stage("S3  upload") {
             when {
                 beforeAgent true
                 branch 'master'
             }
-
             steps {
-                echo 'Deploying'
+                sh '''
+                echo "aws s3 cp" $WORKSPACE/webapp/target/*.?ar "s3://testing.com/building/"
+                '''
+           }
+        }
+        stage("Lmabda Function") {
+            steps {
+ //               withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+    // some block
+ //               }
+                sh '''
+                export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+                export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+                export AWS_DEFAULT_REGION=us-east-1
+                aws s3 ls
+                '''
+                echo "$AWS_ACCESS_KEY_ID"
+                echo "Lmabda function running "
+                echo "nothing is running"
+                echo "change something"
+                echo "nothing has been chagned"
+                echo "This is for PR"
+                
+           }
+            post {
+                success {
+                    echo "Lmabda Function success!"
+                            
+                }
+                failure {
+                    echo "Lmabda Function failure!"
+                            
+                }
             }
         }
+        stage ("Deploying on Dev") {
+            input{
+                message "Please specify environment:"			
+                ok "SUBMIT"
+                submitter "viswa1145@gmail.com"
+                submitterParameter "whoIsSubmitter"
+                parameters {
+                    choice(choices: ['Approved', 'Rejected'], description: 'We need Approval', name: 'Decision')
+                             
+                }
+            }
+            options {
+                timeout(time: 2, unit: 'MINUTES') 
+            }
+            steps {
+                echo "Deployting on Dev"
+                echo "something has been added"
+		echo "${env.ENV_PROD}"
+            }
+            
+        }
+        
     }
 }
+
