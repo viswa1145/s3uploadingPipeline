@@ -2,7 +2,7 @@ def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credential
 properties([pipelineTriggers([githubPush()])])
 
 pipeline {
-    load "$WORKSPAC/env.groovy"
+    load "$WORKSPACE/env.groovy"
     agent any
     options {
         parallelsAlwaysFailFast()
