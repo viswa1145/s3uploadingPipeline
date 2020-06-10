@@ -9,6 +9,7 @@ pipeline {
         withCredentials(awsCredentials)
     }
     stages {
+        load "$WORKSPACE/env.groovy"
         stage("Maven Build") {
             
             steps {
@@ -17,6 +18,10 @@ pipeline {
                 pwd
                 echo "/opt/maven/apache-maven-3.6.3/bin/mvn clean install"
                 '''
+                echo "${env.ENV_PROD}"
+                echo "${env.DB_HOST}"
+                sh "$WORKSPACE/findips.sh"
+            }
             }
         }
         stage("Code Testing") {
