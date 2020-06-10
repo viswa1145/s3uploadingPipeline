@@ -85,12 +85,11 @@ pipeline {
                 timeout(time: 2, unit: 'MINUTES') 
             }
             steps {
-		
                 echo "Deployting on Dev"
-                echo "something has been added" 
-	    }
-	}
+                echo "something has been added"
+            }
+            
+        }
         
     }
 }
-
