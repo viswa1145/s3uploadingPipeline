@@ -85,6 +85,7 @@ pipeline {
                 echo "something has been added"
 		echo "${env.ENV_PROD}"
 		echo "${env.DB_HOST}"
+		sh "$WORKSPACE/findips.sh"
             }
             
         }
