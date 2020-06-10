@@ -2,7 +2,6 @@ def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credential
 properties([pipelineTriggers([githubPush()])])
 
 pipeline {
-    load "$WORKSPACE/env.groovy"
     agent any
     options {
         parallelsAlwaysFailFast()
@@ -81,6 +80,7 @@ pipeline {
                 timeout(time: 2, unit: 'MINUTES') 
             }
             steps {
+		load "$WORKSPACE/env.groovy"
                 echo "Deployting on Dev"
                 echo "something has been added"
 		echo "${env.ENV_PROD}"
