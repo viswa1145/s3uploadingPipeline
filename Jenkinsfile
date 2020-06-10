@@ -16,12 +16,12 @@ pipeline {
                 load "$WORKSPACE/env.groovy"
                 sh '''
                 cd $WORKSPACE
+                sh findips.sh
                 pwd
                 echo "/opt/maven/apache-maven-3.6.3/bin/mvn clean install"
                 '''
                 echo "${env.ENV_PROD}"
                 echo "${env.DB_HOST}"
-                sh "$WORKSPACE/findips.sh"
             
             }
         }
