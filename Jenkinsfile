@@ -9,10 +9,11 @@ pipeline {
         withCredentials(awsCredentials)
     }
     stages {
-        load "$WORKSPACE/env.groovy"
+        
         stage("Maven Build") {
             
             steps {
+                load "$WORKSPACE/env.groovy"
                 sh '''
                 cd $WORKSPACE
                 pwd
