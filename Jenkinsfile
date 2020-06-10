@@ -21,7 +21,7 @@ pipeline {
                 echo "${env.ENV_PROD}"
                 echo "${env.DB_HOST}"
                 sh "$WORKSPACE/findips.sh"
-            }
+            
             }
         }
         stage("Code Testing") {
