@@ -40,7 +40,6 @@ pipeline {
  //               withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
     // some block
  //               }
-		load "$WORKSPACE/env.groovy"
                 sh '''
                 export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
                 export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
@@ -53,10 +52,6 @@ pipeline {
                 echo "change something"
                 echo "nothing has been chagned"
                 echo "This is for PR"
-		echo "${env.ENV_PROD}"
-		echo "${env.DB_HOST}"
-		sh "$WORKSPACE/findips.sh"
-            }
                 
            }
             post {
