@@ -88,7 +88,8 @@ pipeline {
 		
                 echo "Deployting on Dev"
                 echo "something has been added" 
-        }
+	    }
+	}
         
     }
 }
