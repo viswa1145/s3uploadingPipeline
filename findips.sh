@@ -2,9 +2,9 @@ prod=$1
 
 
 echo "this is from shell scripting $prod"
-if ["$prod" == "PROD"]
+if [ "$prod" = "PROD" ]
 then
-    echo "nothing is there"
-    echo "there is something"
+  echo "IT is deploying on PROD"
+else
+  echo "We are doing deploy on QA"
 fi
-
