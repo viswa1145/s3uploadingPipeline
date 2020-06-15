@@ -1,11 +1,11 @@
-def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-test']]
+//def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-test']]
 
 pipeline {
     agent any
     options {
         parallelsAlwaysFailFast()
         timestamps()
-        withCredentials(awsCredentials)
+        //withCredentials(awsCredentials)
     }
     stages {
         stage("Maven Build") {
@@ -39,13 +39,13 @@ pipeline {
  //               withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
     // some block
  //               }
-                sh '''
-                export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-                export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-                export AWS_DEFAULT_REGION=us-east-1
-                aws s3 ls
-                '''
-                echo "$AWS_ACCESS_KEY_ID"
+ //               sh '''
+   //             export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+     //           export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+       //         export AWS_DEFAULT_REGION=us-east-1
+         //       aws s3 ls
+           //     '''
+             //   echo "$AWS_ACCESS_KEY_ID"
                 echo "Lmabda function running "
                 echo "nothing is running"
                 echo "change something"
