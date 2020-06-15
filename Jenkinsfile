@@ -33,7 +33,7 @@ pipeline {
         stage("S3  upload") {
             when {
                 beforeAgent true
-                branch 'master'
+                branch 'env_var.groovy'
             }
             steps {
                 sh '''
