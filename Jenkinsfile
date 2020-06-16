@@ -10,7 +10,6 @@ pipeline {
     }
     stages {
         stage("Maven Build") {
-            
             steps {
                 sh '''
                 cd $WORKSPACE
@@ -35,7 +34,8 @@ pipeline {
                             echo "This is for non prod"
                         }
                     }
-               }
+                }
+            }
         }
         stage("S3  upload") {
             when {
