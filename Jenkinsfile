@@ -1,5 +1,6 @@
 //def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-test']]
 
+@Library('my-shared-library') _
 pipeline {
     agent any
     options {
@@ -20,8 +21,21 @@ pipeline {
         }
         stage("Code Testing") {
             steps {
-                echo "Here we are running code test"
-            }
+                scripts{
+                    def env = utils.getEnvironment()
+                    if (env == null) {
+                        echo "feature branch detected: ${BRANCH_NAME}"
+                    }
+                    else {
+                        def environment = utils.getEnvironment()
+                        if (env == 'production') {
+                            echo "this is master"
+                        }
+                        else {
+                            echo "This is for non prod"
+                        }
+                    }
+               }
         }
         stage("S3  upload") {
             when {
