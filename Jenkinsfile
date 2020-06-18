@@ -26,11 +26,11 @@ pipeline {
                 script {
                     if (params.Lambda_creation =='yes')
                         {
-                            echo params.Lambda_creation
+                            echo "Creating new Lambda function"
                         }
                     else
                         {
-                            echo params.Lambda_creation
+                            echo "Updating Lambda function"
                         }
                 }
             }
