@@ -24,7 +24,7 @@ pipeline {
         stage("Code Testing") {
             steps {
                 script {
-                    if (params.Lambda_creation =='yes')
+                    if (params.Lambda_creation =='Yes')
                         {
                             echo "Creating new Lambda function"
                         }
