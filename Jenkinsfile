@@ -23,7 +23,16 @@ pipeline {
         }
         stage("Code Testing") {
             steps {
-                echo "Here we are running code test"
+                script {
+                    if (params.Lambda_creation =='yes')
+                        {
+                            echo params.Lambda_creation
+                        }
+                    else
+                        {
+                            echo params.Lambda_creation
+                        }
+                }
             }
         }
         stage("S3  upload") {
