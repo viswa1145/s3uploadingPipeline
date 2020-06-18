@@ -2,6 +2,9 @@
 
 pipeline {
     agent any
+    parameters {
+        choice(choices: ['Yes', 'No'], description: 'are we creating new Lambda function', name: 'Lambda_creation')
+    }
     options {
         parallelsAlwaysFailFast()
         timestamps()
