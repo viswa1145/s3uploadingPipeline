@@ -5,6 +5,11 @@ pipeline {
     parameters {
         choice(choices: ['Yes', 'No'], description: 'are we creating new Lambda function', name: 'Lambda_creation')
     }
+    when {
+        expression {
+        return env.BRANCH_NAME != 'master';
+        }
+    }
     options {
         parallelsAlwaysFailFast()
         timestamps()
