@@ -1,9 +1,13 @@
 def getEnvFromBranch(branch) {
   if (branch == 'master') {
     return 'production'
-  } else {
-    return 'staging'
+  }
+  elif (branch == 'if_condition') {
+    return 'if_condition'
  }
+  else{
+    return 'staging'
+  }
 }
 
 pipeline {
