@@ -19,12 +19,6 @@ pipeline {
                def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'CICD']]
                withCredentials(awsCredentials)
              }
-            else {
-               echo "Building in ${env.targetedEnv}"
-            }
-            echo "Nothing has been Changed"
-            echo "something has been Changed"
-          }
         }
     }
   }
