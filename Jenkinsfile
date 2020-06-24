@@ -23,6 +23,7 @@ pipeline {
                echo "Building in ${env.targetedEnv}"
              }
             echo "Nothing has been Changed"
+            echo "something has been Changed"
           }
         }
     }
