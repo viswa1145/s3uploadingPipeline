@@ -21,11 +21,9 @@ pipeline {
              }
              else {
                echo "Building in ${env.targetedEnv}"
-             }
-            
-            
+             }   
           }
         }
     }
- }
+  }
 }
