@@ -19,6 +19,7 @@ pipeline {
                def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'CICD']]
                withCredentials(awsCredentials)
              }
+          }
         }
     }
   }
