@@ -1,6 +1,9 @@
 def getEnvFromBranch(branch) {
   if (BRANCH_NAME == 'master') { return 'production' }
   if (BRANCH_NAME == 'if_condition') { return 'NonProd' }
+  else{
+    return 'staging'
+  }
 }
 
 pipeline {
@@ -11,7 +14,17 @@ pipeline {
   stages {
     stage('Build') {
         steps {
-            echo "Building in ${env.targetedEnv}"
+          script{
+             if (env.targetedEnv == 'NonProd') {
+               def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'CICD']]
+               withCredentials(awsCredentials)
+             }
+             else {
+               echo "Building in ${env.targetedEnv}"
+             }
+            
+            
+          }
         }
     }
  }
