@@ -13,8 +13,8 @@ pipeline {
         steps {
           script{
                 if (env.targetedEnv == 'NonProd') {
-               def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'CICD']]
-               withCredentials(awsCredentials)
+                  def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'CICD']]
+                  withCredentials(awsCredentials)
              }
             echo "$AWS_ACCESS_KEY_ID"
             echo "$AWS_SECRET_ACCESS_KEY"
