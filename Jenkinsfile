@@ -21,7 +21,8 @@ pipeline {
              }
              else {
                echo "Building in ${env.targetedEnv}"
-             }   
+             }
+            echo "Nothing has been Changed"
           }
         }
     }
