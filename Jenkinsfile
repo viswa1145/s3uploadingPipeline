@@ -12,11 +12,12 @@ pipeline {
     stage('Build') {
         steps {
           script{
-             if (env.targetedEnv == 'NonProd') {
+                if (env.targetedEnv == 'NonProd') {
                def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'CICD']]
                withCredentials(awsCredentials)
              }
-            echo "Building in ${env.targetedEnv}"
+            echo "$AWS_ACCESS_KEY_ID"
+            echo "$AWS_SECRET_ACCESS_KEY"
           }
         }
     }
