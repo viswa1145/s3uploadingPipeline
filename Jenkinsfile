@@ -15,7 +15,7 @@ pipeline {
         steps {
           script{
             if (env.targetedEnv == 'NonProd') {
-              withCredentials(awsCredentials)
+              withAWS(credentials: 'awsCredentials', region: 'us-east-1')
             }
           }
           sh 'echo "$AWS_ACCESS_KEY_ID"'
