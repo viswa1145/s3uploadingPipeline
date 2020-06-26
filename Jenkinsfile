@@ -13,9 +13,10 @@ pipeline {
   stages {
     stage('Build') {
         steps {
+          withAWS(credentials: 'awsCredentials', region: 'us-east-1')
           script{
             if (env.targetedEnv == 'NonProd') {
-              withAWS(credentials: 'awsCredentials', region: 'us-east-1')
+              
             }
           }
           sh 'echo "$AWS_ACCESS_KEY_ID"'
